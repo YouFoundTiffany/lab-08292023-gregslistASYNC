@@ -5,16 +5,18 @@ import { api } from "./AxiosService.js"
 // @ts-ignore
 // NOTE we used this to show how to make a new axios instance, but this does not work with Auth
 // NOTE for POST, PUT, DELETE we used the 'api' from the AxiosService to allow us to use Auth
-const _sandboxApi = axios.create({
-    baseURL: "https://sandbox.codeworksacademy.com",
-    timeout: 8000
-})
+// REMMED THIS OUT AND UPDATED HER CONST STATEMENT TO USE THE API INSTEAD OF THE _SANDBOXAPI :P
+// const _sandboxApi = axios.create({
+//     baseURL: "https://sandbox.codeworksacademy.com",
+//     timeout: 8000
+// })
 
 class CarsService {
 
 
     async getCars() {
-        const response = await _sandboxApi.get('api/cars')
+        // UPDATED THE ADDRESS
+        const response = await api.get('api/cars')
         // NOTE: when using axios.... your response will always be wrapped in 'data'
 
         const mappedCars = response.data.map(dataObj => new Car(dataObj)) // NOTE passing the data objects from the API through our car constructor
@@ -39,6 +41,7 @@ class CarsService {
 
     setActive(carId) {
         let car = AppState.cars.find(car => car.id == carId)
+        // @ts-ignore
         AppState.activeCar = car
         console.log(AppState.activeCar);
     }

@@ -3,7 +3,11 @@ import { EventEmitter } from './utils/EventEmitter.js'
 import { isValidProp } from './utils/IsValidProp.js'
 import { loadState } from './utils/Store.js'
 
+
 class ObservableAppState extends EventEmitter {
+
+  /** @type {import('./models/House.js').House[]} */
+  houses = []
 
   /** @type {import('./models/Car.js').Car[]} */
   cars = []
